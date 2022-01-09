@@ -40,3 +40,36 @@ Assumptions
 * Assuming the application is placed in :zephyr_file:`/samples/multitasking_thread_zephyr` in the Zephyr tree.
 * Assuming the terminal is directed to zephyr_projects.
 Eg. cd <ZEPHYR_PATH>/
+
+
+********************
+Building and Running
+********************
+
+-> To build and run the code in native posix, run the command below..
+Command: 
+west build -p -b native_posix zephyr/samples/multithread_sample -t run
+
+
+Output
+******
+
+*** Booting Zephyr OS build zephyr-v2.7.1  ***
+thread 1
+thread 2
+
+thread 1
+thread 2
+
+thread 1
+thread 2
+
+thread 1
+thread 2
+
+thread 1
+thread 2
+:
+:
+
+
