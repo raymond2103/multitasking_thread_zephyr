@@ -73,3 +73,65 @@ thread 2
 :
 
 
+
+
+
+To debug the timmer
+*******************
+
+Set the value of 'DEBUG_TIMMER' in default_config.h to 1 instead of 0.
+This will help print the timmer clock from when the application is started.
+
+Expected output after setting 'DEBUG_TIMMER' to 1
+*************************************************
+
+*** Booting Zephyr OS build zephyr-v2.7.1  ***
+thread 1: Timer count: 1 sec
+thread 2: Timer count: 2 sec
+
+thread 1: Timer count: 3 sec
+thread 2: Timer count: 4 sec
+
+thread 1: Timer count: 6 sec
+thread 2: Timer count: 7 sec
+
+thread 1: Timer count: 10 sec
+thread 2: Timer count: 11 sec
+
+thread 1: Timer count: 15 sec
+thread 2: Timer count: 16 sec
+:
+:
+
+
+
+
+
+
+To debug the time difference and/or timmer count
+************************************************
+
+Set the value of 'DEBUG_TIME_DIFFERENCE' in default_config.h to 1 instead of 0.
+This will help print the timmer clock from when the application is started.
+
+Expected output after setting 'DEBUG_TIME_DIFFERENCE' to 1
+**********************************************************
+
+*** Booting Zephyr OS build zephyr-v2.7.1  ***
+thread 1: Timer count: 1 sec(Time Difference: 1 sec)
+thread 2: Timer count: 2 sec(Time Difference from thread 1: 1 sec)
+
+thread 1: Timer count: 3 sec(Time Difference: 2 sec)
+thread 2: Timer count: 4 sec(Time Difference from thread 1: 1 sec)
+
+thread 1: Timer count: 6 sec(Time Difference: 3 sec)
+thread 2: Timer count: 7 sec(Time Difference from thread 1: 1 sec)
+
+thread 1: Timer count: 10 sec(Time Difference: 4 sec)
+thread 2: Timer count: 11 sec(Time Difference from thread 1: 1 sec)
+
+thread 1: Timer count: 15 sec(Time Difference: 5 sec)
+thread 2: Timer count: 16 sec(Time Difference from thread 1: 1 sec)
+:
+:
+
