@@ -45,6 +45,11 @@ thread_2_entry(void *arg1, void *arg2, void *arg3)
     ARG_UNUSED(arg2);
     ARG_UNUSED(arg3);
 
+    #if DEBUG_TIMMER || DEBUG_TIME_DIFFERENCE
+    /* Variables for testing and debugging purpose only */
+    uint64_t current_timmer_value = 0;
+    #endif
+
     /* Buffer for transmitting the data on message queue */
     signal_buffer_t received_msg;
 
@@ -61,6 +66,19 @@ thread_2_entry(void *arg1, void *arg2, void *arg3)
 
             /* Printing the msg to be shown */
             printk("thread 2");
+
+            /* For debugging the time */
+            #if DEBUG_TIMMER || DEBUG_TIME_DIFFERENCE
+            current_timmer_value = (k_uptime_get()/1000);
+            #endif
+
+            #if DEBUG_TIMMER
+            printk(": Timer count: %lld sec", current_timmer_value);
+            #endif
+
+            #if DEBUG_TIME_DIFFERENCE
+            printk("(Time Difference from thread 1: %lld sec)", current_timmer_value - received_msg.timmer_count);
+            #endif /* DEBUG_TIME_DIFFERENCE */
 
             /* Keeping gap between each msg in the conole */
             printk("\n\n");

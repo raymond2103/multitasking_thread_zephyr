@@ -11,6 +11,11 @@
 #ifndef DEFAULT_CONFIG_H
 #define DEFAULT_CONFIG_H
 
+/* Set this value to 1 for debugging the timmer count for the value being printed */
+#define DEBUG_TIMMER                            0
+#define DEBUG_TIME_DIFFERENCE                   0
+
+
 /* delay (in sec) */
 #define MIN_DELAY_PERIOD                        1
 #define MAX_DELAY_PERIOD                        10

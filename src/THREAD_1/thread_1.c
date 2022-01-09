@@ -43,6 +43,14 @@ thread_1_entry(void *arg1, void *arg2, void *arg3)
 
 	uint8_t delay_period = MIN_DELAY_PERIOD;
 
+    /* Variables for testing and debugging purpose only */
+    #if DEBUG_TIMMER || DEBUG_TIME_DIFFERENCE
+    uint64_t current_timmer_value = 0;
+    #if DEBUG_TIME_DIFFERENCE
+    uint64_t previous_timmer_value = 0;
+    #endif  /* DEBUG_TIME_DIFFERENCE */
+    #endif  /* DEBUG_TIMMER || DEBUG_TIME_DIFFERENCE */
+
     /* Buffer for transmitting the data on message queue */
     signal_buffer_t send_msg;
     
@@ -53,6 +61,21 @@ thread_1_entry(void *arg1, void *arg2, void *arg3)
 
         /* Printing the msg to be shown */
         printk("thread 1");
+
+        /* For debugging the time */
+        #if DEBUG_TIMMER || DEBUG_TIME_DIFFERENCE
+        current_timmer_value = (k_uptime_get()/1000);
+        #endif  /* DEBUG_TIMMER || DEBUG_TIME_DIFFERENCE */
+
+        #if DEBUG_TIMMER
+        printk(": Timer count: %lld sec", current_timmer_value);
+        #endif  /* DEBUG_TIMMER */
+
+        #if DEBUG_TIME_DIFFERENCE
+        printk("(Time Difference: %lld sec)", current_timmer_value - previous_timmer_value);
+        previous_timmer_value = current_timmer_value;
+        send_msg.timmer_count = current_timmer_value;
+        #endif /* DEBUG_TIME_DIFFERENCE */
 
         /* Keeping gap between each msg in the conole */
         printk("\n");

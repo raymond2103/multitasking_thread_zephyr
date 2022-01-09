@@ -16,6 +16,9 @@
  */
 typedef struct {
     bool message_from_thread_1;
+
+    /* Variable to send the timmer valuefor debbing */
+    uint64_t timmer_count;
 } signal_buffer_t;
 
 #endif /* COMMON_H */
